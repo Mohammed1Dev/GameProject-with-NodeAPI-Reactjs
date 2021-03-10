@@ -13,16 +13,16 @@ const initialValues ={
 const validate = value =>{
     const error ={}
     if(!value.first_Name){
-        error.first_Name='required first'
+        error.first_Name='required firstName'
     }
     if(!value.last_Name){
-        error.first_Name='required las'
+        error.first_Name='required lastName'
     }
     if(!value.email){
         error.email='required email'
     }
     if(!value.password){
-        error.password='required'
+        error.password='required Password'
     }
          return error
 }
@@ -30,7 +30,7 @@ export default function Login(props) {
 
     const onSubmit = async (value) =>{
         console.log('there are:',value)
-      const res = await axios.post('http://127.0.0.1:3000/api/register/',{value})
+      const res = await axios.post('http://127.0.0.1:3000/api/register/',value)
       if(res.data){
           alert('success')
           props.history.push('/')

@@ -22,7 +22,11 @@ const quizSchema = new mongoose.Schema({
     }
         
     
-});
+},
+{
+    versionKey: false
+}
+);
 const Quiz = mongoose.model("quizs",quizSchema);
 module.exports = Quiz;
 

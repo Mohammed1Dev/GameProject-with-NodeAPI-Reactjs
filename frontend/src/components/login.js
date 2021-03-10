@@ -23,15 +23,18 @@ const validate = value =>{
 export default function Forms(props) {
 	const onSubmit = async (value) =>{
 		console.log('there are:',value)
-	  const res = await axios.post('http://127.0.0.1:3000/api/login/',{value})
+	  const res = await axios.post('http://127.0.0.1:3000/api/login/',value)
 
-	      if(!res.data.user){
+	
+		if(!res.data.user){
 			alert('password  or email not found')
 
 		  }else{
-			localStorage.setItem('jwt_info', JSON.stringify(res.data))
+			localStorage.setItem('jwt_info',res.data.token)
 			props.history.push('/categorys')
 		  }
+	
+	     
 			 
 		  
 	}

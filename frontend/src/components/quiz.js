@@ -1,10 +1,16 @@
 import React, { useState,useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import Fire from "./fireWin";
 import axios from 'axios';
 import './styleSheet/quiz.css'
 
+const section = document.createElement('section');
+
+
+   
  function Quiz({match}) {
     const [questions,setQuestions] = useState([]);
-console.log("match ", match.params.id);
+console.log("match ", match.params.id);	
 let {id}= match.params;
 
     useEffect(() => {   
@@ -35,13 +41,27 @@ let {id}= match.params;
 			setShowScore(true);
 		}
 	};
+
+	if (showScore) {
+	
+			document.body.appendChild(section)
+		
+	}
 	return (
+		
 	 <div >
 			{showScore ? (
-		 		<div className='score-section'>
-				You scored {score} points 
-			</div>
-	 	) : questions.length ? (
+				
+				<>
+					
+					 {/* <Fire/> */}
+					<div className='score-section'>
+					You scored {score} points 
+					</div>
+					
+				</>
+		
+	 		) : questions.length ? (
 		 		<>
 					 <div className='question-section'>
 						<div className='question-count'>

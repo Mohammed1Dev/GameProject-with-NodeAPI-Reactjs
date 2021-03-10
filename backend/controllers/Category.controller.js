@@ -20,18 +20,41 @@ const getCategory = async (req, res) => {
 const addCategory = async(req,res)=>{
 
 
-  const addCat = new Category({
+  const Cat = new Category({
      
     name:req.body.name
 
   })
+  const savedCategory = await Cat.save();
   try {
-    const savedUser = await addCat.save();
-     res.send("succes");
+    
+     res.send(savedCategory.name+" is Saved Successfuly");
   } catch (err) {
     res.send(err);
   }
     
+}
+
+const updateCategory = (req, res) => {
+
+  const id = req.params.id;
+  const Cat = new Category({name: req.body.name})
+
+    Category.findByIdAndUpdate({_id: id}, {$set: {name: Cat.name}})
+            .then(savedCategory => {res.send(savedCategory+" is Updated Successfuly")})
+            .catch(err => {res.send("Error Category not Updated Because => "+ err)})
 
 }
-  module.exports={getCategory,addCategory}
+
+const deleteCategory = (req, res) => {
+
+  const id = req.params.id;
+
+    Category.findByIdAndDelete({_id: id})
+            .then(deletedCategory => {res.send(deletedCategory.name+" is Deleted Successfuly")})
+            .catch(err => {res.send("Error Category not Deleted Because => "+ err)})
+
+}
+
+
+  module.exports={getCategory,addCategory, updateCategory, deleteCategory}

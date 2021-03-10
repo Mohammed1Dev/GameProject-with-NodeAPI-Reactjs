@@ -7,7 +7,13 @@ import {Link} from 'react-router-dom'
 
 
     useEffect(() => {   
-        axios.get('http://127.0.0.1:3000/api/category')
+      let readtOKEN= localStorage.getItem('jwt_info');
+        axios.get('http://127.0.0.1:3000/api/category',{
+          headers : {
+              "auth-token": readtOKEN
+          }
+
+        })
           .then(res =>{
             setCategory(
                 res.data
@@ -15,7 +21,7 @@ import {Link} from 'react-router-dom'
               //  console.log(res.data);
           }
 		  )
-}); 
+},[]); 
 
    
 
@@ -28,21 +34,15 @@ import {Link} from 'react-router-dom'
 
              <div className="col-lg-4 col-12 mb-3 " key={item._id}>
                <Link to={`/quiz/${item._id}`} class="text-center d-block">
-            <div className="card carts p-5">
-              <div className="card-body">
-                <h3 className="card-title text-center">{item.name}</h3>
+                <div className="card carts p-5">
+                  <div className="card-body">
+                    <h3 className="card-title text-center">{item.name}</h3>
+                  </div>
+                </div>
+              </Link>
               </div>
-            </div>
-            </Link>
-          </div>
-        
-        
 
-
-
-          )
-
-          )}
+          ))}
           
 
         </div>

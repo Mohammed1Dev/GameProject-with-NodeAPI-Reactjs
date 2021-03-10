@@ -10,7 +10,7 @@ import Quiz from './components/quiz';
 import Categorys from './components/Categorys';
 import {isAuthenticated} from './components/Categorys';
 import PrivateRoute from "./../src/components/auth/PrivateRoute"
-import Dash from "./../src/components/auth/AdminRoute"
+// import Dash from "./../src/components/auth/AdminRoute"
 
 
 function App() {
@@ -19,11 +19,11 @@ function App() {
     <div className="container">
       <Router>
         <Switch>
-    <Route path='/' exact component={Login}  />
-    <PrivateRoute path='/categorys' exact component={Categorys}  />
-    <PrivateRoute path="/quiz/:id"    component={Quiz} />
-    <Route path="/register"    component={Forms}/>
-    <Dash path="/dashboard"    component={dashhhh}/>
+          <Route path='/' exact component={Login}  />
+          <PrivateRoute path='/categorys' exact component={Categorys}  />
+          <PrivateRoute path="/quiz/:id"    component={Quiz} />
+          <Route path="/register"    component={Forms}/>
+          {/* <Dash path="/dashboard"    component={dashhhh}/> */}
 
     </Switch>
     </Router>

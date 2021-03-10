@@ -8,7 +8,11 @@ const categorySchema = new mongoose.Schema({
         max: 255
     },
     
-});
+},
+{
+    versionKey: false
+}
+);
 
 
 const Category = mongoose.model("categorys",categorySchema);

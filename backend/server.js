@@ -16,6 +16,7 @@ let RouteQuiz= require('./route/routeQuiz');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+
 app.use(cors());
 app.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin","*");
@@ -38,4 +39,6 @@ app.listen(PORT,()=>{
     loggers.info(`Server listen this Port ${PORT}`);
     loggers.error("sommting wrong");
 });
+
+module.exports = app;
 
